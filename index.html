@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="images/Gemini_Generated_Image_4qqf544qqf544qqf-removebg-preview.png" />
+  <link rel="icon" type="image/png" href="fav.png" />
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -299,7 +299,7 @@
       bottom: 70px;
       left: 50%;
       transform: translateX(-50%);
-      width: 70px;
+      width: 75px;
       opacity: 0.9;
     }
 
@@ -383,13 +383,6 @@
       line-height: 1.1;
     }
 
-    .strip-left .accent-sub {
-      font-size: 14px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
     .strip-left .strip-text {
       max-width: 440px;
     }
@@ -407,12 +400,10 @@
       position: relative;
       width: 100%;
       max-width: 460px;
-      height: 320px;
     }
 
     .gallery-slide {
-      position: absolute;
-      inset: 0;
+      display: none;
       opacity: 0;
       transform: translateX(8px);
       transition: opacity 0.5s ease, transform 0.5s ease;
@@ -420,20 +411,19 @@
 
     .gallery-slide img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       border-radius: 4px;
     }
 
     .gallery-slide.is-active {
+      display: block;
       opacity: 1;
       transform: translateX(0);
     }
 
     .gallery-controls {
-      position: absolute;
-      inset-inline: 0;
-      bottom: -40px;
+      margin-top: 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -566,7 +556,7 @@
       border-radius: 4px;
       overflow: hidden;
       background: #000;
-      max-height: 480px;
+      max-height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -608,7 +598,7 @@
 
     .barber-photo {
       position: relative;
-      height: 320px;
+      height: 380px;
       overflow: hidden;
     }
 
@@ -616,6 +606,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: top center;
       transform: scale(1.02);
       transition: transform 0.35s ease;
     }
@@ -725,6 +716,23 @@
       letter-spacing: 0.18em;
     }
 
+    .pricing-view-all {
+      margin-top: 18px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pricing-view-all span {
+      font-size: 12px;
+    }
+
     /* ---------------- TESTIMONIALS SLIDER ---------------- */
 
     .testimonial-band {
@@ -742,6 +750,7 @@
       margin: 40px auto 0;
       position: relative;
       padding-inline: 30px;
+      min-height: 190px;
     }
 
     .testimonial-slide {
@@ -833,41 +842,16 @@
     }
 
     .google-review-badge {
-      margin-top: 34px;
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(255,255,255,0.25);
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .google-logo {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: #3367d6;
-      font-weight: 700;
-    }
-
-    .google-stars {
-      color: var(--gold);
-      font-size: 14px;
-      letter-spacing: 2px;
+      margin-top: 49px; /* original 34 + 15px extra */
+      text-align: center;
     }
 
     .google-link {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #d0d0d0;
       text-decoration: underline;
-      text-decoration-style: dotted;
       text-underline-offset: 3px;
     }
 
@@ -1040,7 +1024,7 @@
     </div>
     <div class="info-card">
       <div class="info-label">Hours</div>
-      <div class="info-main">Mon – Sat · 8:00am – 7:30pm</div>
+      <div class="info-main">Mon – Sat<br>8:00am – 7:30pm</div>
       <div class="info-sub">Subject to availability · By appointment only.</div>
     </div>
   </section>
@@ -1048,7 +1032,6 @@
   <!-- GALLERY STRIP -->
   <section class="strip" id="gallery">
     <div class="strip-left">
-      <div class="accent-sub">Being a barber is about taking care of people</div>
       <h3>Sharp lines. Clean fades. Quiet confidence.</h3>
       <p class="strip-text">
         The Gentlemen’s Quarters is a private studio designed for men who value detail. Every cut, fade, and beard service is tailored to your face shape, lifestyle, and personal style—never rushed, never generic.
@@ -1072,18 +1055,18 @@
         <div class="gallery-slide">
           <img src="images/2025-05-05 (4).webp" alt="Finished style 2" />
         </div>
+      </div>
 
-        <div class="gallery-controls">
-          <div class="gallery-arrows">
-            <button class="gallery-arrow" id="galleryPrev" aria-label="Previous style">‹</button>
-            <button class="gallery-arrow" id="galleryNext" aria-label="Next style">›</button>
-          </div>
-          <div class="gallery-dots" id="galleryDots">
-            <div class="gallery-dot is-active"></div>
-            <div class="gallery-dot"></div>
-            <div class="gallery-dot"></div>
-            <div class="gallery-dot"></div>
-          </div>
+      <div class="gallery-controls">
+        <div class="gallery-arrows">
+          <button class="gallery-arrow" id="galleryPrev" aria-label="Previous style">‹</button>
+          <button class="gallery-arrow" id="galleryNext" aria-label="Next style">›</button>
+        </div>
+        <div class="gallery-dots" id="galleryDots">
+          <div class="gallery-dot is-active"></div>
+          <div class="gallery-dot"></div>
+          <div class="gallery-dot"></div>
+          <div class="gallery-dot"></div>
         </div>
       </div>
     </div>
@@ -1123,7 +1106,7 @@
         </p>
       </div>
       <div class="about-photo">
-        <img src="images/2025-04-28.webp" alt="Cynthia Rivera in the studio" />
+        <img src="images/2025-05-05.webp" alt="Cynthia Rivera in the studio" />
       </div>
     </div>
   </section>
@@ -1180,104 +1163,117 @@
     </div>
   </section>
 
-  <!-- SHAVES & TRIMS / PRICING COLUMNS -->
+  <!-- CUTS & TRIMS / PRICING COLUMNS -->
   <section class="shaves" id="pricing">
     <div class="section-heading">
-      <div class="eyebrow">Shaves & Trims</div>
+      <div class="eyebrow">Cuts & Trims</div>
       <h2>Pricing May Vary by Style</h2>
       <p>
         Transparent, straightforward pricing with no surprises. Final cost depends on hair length, complexity, and add-on services.
+        Children and senior discounts available. Military and first responder discount available (ID or badge required).
       </p>
     </div>
 
     <div class="pricing-columns">
-      <!-- Column 1 -->
+      <!-- Column 1 - Styling -->
       <div class="pricing-column">
         <div class="pricing-heading">Styling</div>
         <div class="pricing-underline"></div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Classic Style</div>
-            <div class="pricing-meta">Wash, blow-dry, light product</div>
+            <div class="pricing-label">Mustache, Beard & Sideburns Color</div>
+            <div class="pricing-meta">Demi-permanent facial hair color</div>
           </div>
-          <div class="pricing-price">$25</div>
+          <div class="pricing-price">$32</div>
         </div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Refresh &amp; Finish</div>
-            <div class="pricing-meta">Line clean-up &amp; style between cuts</div>
+            <div class="pricing-label">Gentlemen's Camo Color Blend</div>
+            <div class="pricing-meta">Subtle gray-blending camo color</div>
           </div>
-          <div class="pricing-price">$20</div>
+          <div class="pricing-price">$50</div>
         </div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Event Styling</div>
-            <div class="pricing-meta">Camera-ready detail work</div>
+            <div class="pricing-label">Gentlemen's Color Service</div>
+            <div class="pricing-meta">Full-coverage permanent color</div>
           </div>
-          <div class="pricing-price">From $40</div>
+          <div class="pricing-price">$62</div>
+        </div>
+
+        <div class="pricing-view-all" onclick="window.open('https://app.squareup.com/appointments/book/7g6slalylcdx3a/L86SQ0C594Y41/start?hl=en-US&gei=ee4tad7yJ-OyqtsP9pXt0Q4&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D','_blank')">
+          View all <span>↗</span>
         </div>
       </div>
 
-      <!-- Column 2 -->
+      <!-- Column 2 - Haircuts -->
       <div class="pricing-column">
         <div class="pricing-heading">Haircuts</div>
         <div class="pricing-underline"></div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Signature Cut</div>
-            <div class="pricing-meta">Consultation, cut &amp; style</div>
+            <div class="pricing-label">Gentlemen’s Haircut</div>
+            <div class="pricing-meta">Precision cut with shampoo & towel</div>
           </div>
-          <div class="pricing-price">$55</div>
+          <div class="pricing-price">$38–$45</div>
         </div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Skin Fade</div>
-            <div class="pricing-meta">Detailed fade + finishing</div>
+            <div class="pricing-label">Executive Skin Fade</div>
+            <div class="pricing-meta">Ultra-close fade with full finish</div>
           </div>
-          <div class="pricing-price">$60</div>
+          <div class="pricing-price">$56</div>
         </div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Clean-Up Cut</div>
-            <div class="pricing-meta">For returning clients within 3 weeks</div>
+            <div class="pricing-label">The Gentlemen's Flow</div>
+            <div class="pricing-meta">Long-hair cut with full finish</div>
           </div>
-          <div class="pricing-price">$40</div>
+          <div class="pricing-price">$56</div>
+        </div>
+
+        <div class="pricing-view-all" onclick="window.open('https://app.squareup.com/appointments/book/7g6slalylcdx3a/L86SQ0C594Y41/start?hl=en-US&gei=ee4tad7yJ-OyqtsP9pXt0Q4&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D','_blank')">
+          View all <span>↗</span>
         </div>
       </div>
 
-      <!-- Column 3 -->
+      <!-- Column 3 - Beards -->
       <div class="pricing-column">
         <div class="pricing-heading">Beards</div>
         <div class="pricing-underline"></div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Beard Trim</div>
-            <div class="pricing-meta">Shape, bulk removal &amp; comb finish</div>
+            <div class="pricing-label">Beard & Mustache Trim</div>
+            <div class="pricing-meta">Detailed shaping & line clean-up</div>
+          </div>
+          <div class="pricing-price">$20</div>
+        </div>
+
+        <div class="pricing-row">
+          <div>
+            <div class="pricing-label">Beard Trim & Conditioner</div>
+            <div class="pricing-meta">Trim with hot towel & treatment</div>
           </div>
           <div class="pricing-price">$30</div>
         </div>
 
         <div class="pricing-row">
           <div>
-            <div class="pricing-label">Beard Design</div>
-            <div class="pricing-meta">Detailed shaping &amp; line work</div>
+            <div class="pricing-label">Gentlemen’s Mustache Trim</div>
+            <div class="pricing-meta">Clean, detailed mustache trim</div>
           </div>
-          <div class="pricing-price">$40</div>
+          <div class="pricing-price">$5</div>
         </div>
 
-        <div class="pricing-row">
-          <div>
-            <div class="pricing-label">Cut + Beard Combo</div>
-            <div class="pricing-meta">Signature haircut &amp; full beard service</div>
-          </div>
-          <div class="pricing-price">$80</div>
+        <div class="pricing-view-all" onclick="window.open('https://app.squareup.com/appointments/book/7g6slalylcdx3a/L86SQ0C594Y41/start?hl=en-US&gei=ee4tad7yJ-OyqtsP9pXt0Q4&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D','_blank')">
+          View all <span>↗</span>
         </div>
       </div>
     </div>
@@ -1391,10 +1387,8 @@
     </div>
 
     <div class="google-review-badge">
-      <div class="google-logo">G</div>
-      <div class="google-stars">★★★★★</div>
       <a class="google-link" href="https://www.google.com/search?q=Gentalmens+Quarters&oq=ge&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGDsyEAgCEC4YxwEYsQMY0QMYgAQyBggDEEUYPDIGCAQQRRg8MgYIBRBFGDwyBggGEEUYPDIGCAcQRRg80gEHNTgyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0xaedd5f7f1925591:0xb78d51d027d85c05,1,,,," target="_blank" rel="noopener noreferrer">
-        See what other happy customers have to say
+        See what other happy clients have to say
       </a>
     </div>
   </section>
@@ -1451,7 +1445,7 @@
     );
     sections.forEach(section => observer.observe(section));
 
-    // Gallery slider
+    // Gallery slider (manual only)
     (function () {
       const slides = document.querySelectorAll(".gallery-slide");
       const dots = document.querySelectorAll("#galleryDots .gallery-dot");
@@ -1459,8 +1453,6 @@
       const nextBtn = document.getElementById("galleryNext");
       let current = 0;
       const total = slides.length;
-      const INTERVAL = 7000;
-      let timer;
 
       function showGallerySlide(index) {
         slides.forEach((slide, i) => {
@@ -1482,32 +1474,15 @@
         showGallerySlide(prev);
       }
 
-      function resetTimer() {
-        clearInterval(timer);
-        timer = setInterval(nextGallery, INTERVAL);
-      }
-
-      nextBtn.addEventListener("click", () => {
-        nextGallery();
-        resetTimer();
-      });
-
-      prevBtn.addEventListener("click", () => {
-        prevGallery();
-        resetTimer();
-      });
+      nextBtn.addEventListener("click", nextGallery);
+      prevBtn.addEventListener("click", prevGallery);
 
       dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-          showGallerySlide(i);
-          resetTimer();
-        });
+        dot.addEventListener("click", () => showGallerySlide(i));
       });
-
-      timer = setInterval(nextGallery, INTERVAL);
     })();
 
-    // Testimonials slider (10 slides, 10s each, with arrows)
+    // Testimonials slider (10 slides, 20s each, with arrows + dots)
     (function () {
       const slides = document.querySelectorAll(".testimonial-slide");
       const dots = document.querySelectorAll("#testimonialDots .testimonial-dot");
@@ -1515,7 +1490,7 @@
       const nextBtn = document.getElementById("testimonialNext");
       let current = 0;
       const total = slides.length;
-      const INTERVAL = 10000;
+      const INTERVAL = 20000; // 20 seconds
       let timer;
 
       function showTestimonial(index) {
@@ -1563,5 +1538,8 @@
       timer = setInterval(nextTestimonial, INTERVAL);
     })();
   </script>
+
+  <!-- Google Review Badge by Shapo.io -->
+  <script src="https://cdn.shapo.io/js/google-badge-loader.js" data-settings="eyJwbGFjZUlkIjoiQ2hJSmtWV1M4ZmZWN1FvUkJWellKOUJSamJjIiwicGxhY2VOYW1lIjoiVGhlIEdlbnRsZW1lbidzIFF1YXJ0ZXJzIGJ5IEN5bnRoaWEgUml2ZXJhIC0gQmFyYmVyc2hvcCBpbiBBdXN0aW4iLCJwbGFjZUFkZHJlc3MiOiJJbnNpZGUgUGhlbml4IHNhbG9uIHN1aXRlcywgMTQwMDUgVVMtMTgzIHN1aXRlIDEyMDAsIEF1c3RpbiwgVFggNzg3MTcsIFVTQSIsInJhdGluZyI6NSwicmV2aWV3Q291bnQiOjY0LCJwb3NpdGlvbiI6ImJvdHRvbS1yaWdodCIsInRlbXBsYXRlIjoiZGFyayIsImJ1dHRvblRleHQiOiJMZWF2ZSBhIFJldmlldyIsImJ1dHRvbkNvbG9yIjoiIzU0NTQ1NCIsInJldmlld3MiOlt7ImF1dGhvck5hbWUiOiJKYWtlIExlcGFnZSIsImF1dGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FMVi1ValdEZ2c0N0ptVGlqOHppNVFTSnlqc1h2OThsQV84aWJOR01Sa1Q4VTFlM29wcFFhREE9czEyOC1jMHgwMDAwMDAwMC1jYy1ycC1tbyIsInJhdGluZyI6MCwidGV4dCI6IiJ9LHsiYXV0aG9yTmFtZSI6IlRqIE1hcmVrIiwiYXV0aG9yUGhvdG9VcmwiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS0vQUxWLVVqVy1UM1ExWVZGZmRpU3pFZUhBaklpQ0NBOTVLcE5hZjh3RV9NYmFMVVYxUUc4c1dnX2M9czEyOC1jMHgwMDAwMDAwMC1jYy1ycC1tbyIsInJhdGluZyI6MCwidGV4dCI6IiJ9LHsiYXV0aG9yTmFtZSI6IkFsZXggTWFycXVleiIsImF1dGhvclBob3RvVXJsIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSnpobW9wMVZjNkN1Ymg4dGY4TGkyNy1hb2VydndEUHE1eVBTSHRVU29DYnRNY0N3PXMxMjgtYzB4MDAwMDAwMDAtY2MtcnAtbW8iLCJyYXRpbmciOjAsInRleHQiOiIifSx7ImF1dGhvck5hbWUiOiJKZXJlbXkgVGhvbXBzb24iLCJhdXRob3JQaG90b1VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0paYnVkYWYyMFZNd1lFUW9pMk92VWtHckh1bk50X3d6bzNfMlZFeDZicU1LVU5zZz1zMTI4LWMweDAwMDAwMDAwLWNjLXJwLW1vIiwicmF0aW5nIjowLCJ0ZXh0IjoiIn0seyJhdXRob3JOYW1lIjoiQ29keSBMYXVnaGxhbmQiLCJhdXRob3JQaG90b1VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BTFYtVWpVbjNWNlM4MW1FdUhYcUJTVlZIT1ZUNFlaU1NLNXhzLTR6MTRlc3FCaVdiZnVzNEljUj1zMTI4LWMweDAwMDAwMDAwLWNjLXJwLW1vIiwicmF0aW5nIjowLCJ0ZXh0IjoiIn1dfQ=="></script>
 </body>
 </html>
