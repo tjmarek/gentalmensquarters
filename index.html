@@ -850,6 +850,8 @@
 
     /* ---------------- RESPONSIVE ---------------- */
 
+    
+
     @media (max-width: 1024px) {
       .strip {
         grid-template-columns: 1.3fr 1fr;
@@ -937,6 +939,20 @@
         align-items: flex-start;
       }
     }
+
+    @media (max-width: 600px) {
+  .hero {
+    height: auto;
+    padding-top: 100px;
+    padding-bottom: 170px;
+    min-height: 100vh;
+  }
+
+  .hero-logo-mark {
+    bottom: 30px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -967,7 +983,7 @@
     <div class="hero-inner">
       <div class="hero-eyebrow">Modern Men's Grooming</div>
       <h1 class="hero-title">Precision Cuts. Distinguished Style.</h1>
-      <div class="hero-sub">Cuts · Fades · Beards</div>
+      <div class="hero-sub">Haircuts · Fades · Beards</div>
       <p class="hero-copy">
         Cynthia Rivera is a men's grooming specialist with over 20 years of experience, offering precision haircuts, fades, and expert beard trims/shaping.
       </p>
