@@ -938,20 +938,25 @@
         flex-direction: column;
         align-items: flex-start;
       }
-    }
+      @media (max-width: 600px) {
 
-    @media (max-width: 600px) {
-  .hero {
-    height: auto;
-    padding-top: 100px;
-    padding-bottom: 170px;
-    min-height: 100vh;
+  .hero-title {
+    font-size: clamp(30px, 8vw, 42px);
+    line-height: 1.1;
   }
 
-  .hero-logo-mark {
-    bottom: 30px;
+  .hero-sub {
+    font-size: clamp(16px, 4vw, 20px);
+    letter-spacing: 0.18em;
   }
+
+  .hero-copy {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
 }
+    }
 
   </style>
 </head>
@@ -981,11 +986,11 @@
   <!-- HERO / BOOKING -->
   <section class="hero" id="booking">
     <div class="hero-inner">
-      <div class="hero-eyebrow">Modern Men's Grooming</div>
+      <div class="hero-eyebrow">Modern Men's Barber</div>
       <h1 class="hero-title">Precision Cuts. Distinguished Style.</h1>
-      <div class="hero-sub">Haircuts · Fades · Beards</div>
+      <div class="hero-sub">Cuts · Fades · Beards</div>
       <p class="hero-copy">
-        Cynthia Rivera is a men's grooming specialist with over 20 years of experience, offering precision haircuts, fades, and expert beard trims/shaping.
+        With 20+ years of experience, Cynthia Rivera specializes in men's grooming: precision haircuts, fades, beard trims/shaping, and more.
       </p>
       <div class="hero-cta-row">
         <button class="btn" onclick="window.open('https://app.squareup.com/appointments/book/7g6slalylcdx3a/L86SQ0C594Y41/start?hl=en-US&gei=ee4tad7yJ-OyqtsP9pXt0Q4&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D','_blank')">
