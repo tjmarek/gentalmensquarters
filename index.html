@@ -847,104 +847,113 @@
       text-decoration-style: dotted;
       text-underline-offset: 3px;
     }
-
-    /* ---------------- RESPONSIVE ---------------- */
-
     
 
-    @media (max-width: 1024px) {
-      .strip {
-        grid-template-columns: 1.3fr 1fr;
-        grid-template-rows: 260px 260px;
-      }
+/* ---------------- RESPONSIVE ---------------- */
 
-      .strip-tile:nth-child(3) {
-        grid-column: span 2;
-      }
+@media (max-width: 1024px) {
+  .strip {
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 260px 260px;
+  }
 
-      .about-layout {
-        grid-template-columns: 1fr;
-      }
-      .barber-grid,
-      .pricing-columns {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-    }
+  .strip-tile:nth-child(3) {
+    grid-column: span 2;
+  }
 
-    @media (max-width: 860px) {
-      .site-header {
-        padding-inline: 6vw;
-      }
-      .nav-links {
-        position: fixed;
-        inset-inline: 0;
-        top: 64px;
-        background: rgba(8,8,10,0.98);
-        flex-direction: column;
-        padding: 20px 6vw 30px;
-        gap: 18px;
-        transform: translateY(-120%);
-        opacity: 0;
-        pointer-events: none;
-        transition: 0.25s ease;
-      }
-      .nav-links.is-open {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .nav-toggle {
-        display: block;
-      }
-      .hero {
-        padding-inline: 6vw;
-      }
-      .hero-bottom-tagline {
-        margin-top: 30px;
-        bottom: 32px;
-      }
-      .hero-logo-mark {
-        margin-bottom: 20px;
-      }
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
 
-      .hero-logo-mark {
-        bottom: 60px;
-      }
-      .info-strip {
-        grid-template-columns: 1fr;
-      }
-      .info-card {
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-      .info-card:last-child {
-        border-bottom: none;
-      }
-      section {
-        padding-inline: 6vw;
-      }
+  .barber-grid,
+  .pricing-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-      .strip {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
+@media (max-width: 860px) {
+  .site-header {
+    padding-inline: 6vw;
+  }
 
-      .barber-grid,
-      .pricing-columns {
-        grid-template-columns: 1fr;
-      }
-      .testimonial-slider {
-        padding-inline: 8px;
-      }
-      .testimonial-quote {
-        font-size: 16px;
-      }
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      @media (max-width: 600px) {
+  .nav-links {
+    position: fixed;
+    inset-inline: 0;
+    top: 64px;
+    background: rgba(8, 8, 10, 0.98);
+    flex-direction: column;
+    padding: 20px 6vw 30px;
+    gap: 18px;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.25s ease;
+  }
 
+  .nav-links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .hero {
+    padding-inline: 6vw;
+  }
+
+  .hero-bottom-tagline {
+    bottom: 32px;
+  }
+
+  .hero-logo-mark {
+    bottom: 60px;
+  }
+
+  .info-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .info-card:last-child {
+    border-bottom: none;
+  }
+
+  section {
+    padding-inline: 6vw;
+  }
+
+  .strip {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .barber-grid,
+  .pricing-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-slider {
+    padding-inline: 8px;
+  }
+
+  .testimonial-quote {
+    font-size: 16px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
   .hero-title {
     font-size: clamp(30px, 8vw, 42px);
     line-height: 1.1;
@@ -959,31 +968,12 @@
     font-size: 14px;
     line-height: 1.7;
   }
-        
-@media (max-width: 600px) {
+
   .hero {
     padding-top: 45px; 
   }
 }
-@media (max-width: 860px) {
-  #gallery.gallery-links {
-    display: block;
-    padding: 80px 6vw;
-  }
 
-  .gallery-link-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .gallery-link-item {
-    min-height: 300px;
-  }
-}
-
-}
-    }
 
   </style>
 </head>
