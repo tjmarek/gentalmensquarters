@@ -395,81 +395,71 @@
       justify-content: center;
       overflow: hidden;
     }
+    
+/* Gallery Link Section */
+    
+.gallery-links {
+  background: var(--bg-alt);
+  padding: 110px 8vw;
+}
 
-    .gallery-slider-inner {
-      position: relative;
-      width: 100%;
-      max-width: 460px;
-    }
+.gallery-links .section-heading p {
+  max-width: 520px;
+  margin: 18px auto 0;
+}
 
-    .gallery-slide {
-      display: none;
-      opacity: 0;
-      transform: translateX(8px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
+.gallery-link-grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
 
-    .gallery-slide img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      border-radius: 4px;
-    }
+.gallery-link-item {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 320px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .gallery-slide.is-active {
-      display: block;
-      opacity: 1;
-      transform: translateX(0);
-    }
+.gallery-link-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.78));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 30px;
+  text-align: center;
+}
 
-    .gallery-controls {
-      margin-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-inline: 6px;
-    }
+.gallery-link-overlay span {
+  font-family: "Oswald", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
 
-    .gallery-arrows {
-      display: flex;
-      gap: 8px;
-    }
+.gallery-link-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 40px rgba(0,0,0,0.7);
+}
 
-    .gallery-arrow {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.5);
-      background: transparent;
-      color: #fff;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
+.gallery-link-item:hover .gallery-link-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.06), rgba(0,0,0,0.6));
+}
 
-    .gallery-arrow:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    .gallery-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .gallery-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-    }
-
-    .gallery-dot.is-active {
-      background: #fff;
-    }
+@media (max-width: 900px) {
+  .gallery-link-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
     /* ---------------- BOOKING BAND ---------------- */
 
@@ -1029,48 +1019,33 @@
     </div>
   </section>
 
-  <!-- GALLERY STRIP -->
-  <section class="strip" id="gallery">
-    <div class="strip-left">
-      <h3>Sharp lines. Clean fades. Quiet confidence.</h3>
-      <p class="strip-text">
-        The Gentlemen’s Quarters is a private studio designed for men who value detail. Every cut, fade, and beard service is tailored to your face shape, lifestyle, and personal style—never rushed, never generic.
-      </p>
-      <p class="strip-text">
-        Below are a few real client results—before and afters, and finished looks that show Cynthia’s attention to shape, balance, and clean finishing.
-      </p>
-    </div>
+ <!-- GALLERY (LINK STYLE) -->
+<section id="gallery" class="gallery-links">
+  <div class="section-heading">
+    <div class="eyebrow">Gallery</div>
+    <h2>See The Work</h2>
+    <p>
+      Explore before-and-afters and finished styles from real clients of The Gentlemen’s Quarters.
+    </p>
+  </div>
 
-    <div class="strip-gallery-slider" id="gallerySlider">
-      <div class="gallery-slider-inner">
-        <div class="gallery-slide is-active">
-          <img src="images/2025-11-02.webp" alt="Before and after haircut 1" />
-        </div>
-        <div class="gallery-slide">
-          <img src="images/2025-11-02 (1).webp" alt="Before and after haircut 2" />
-        </div>
-        <div class="gallery-slide">
-          <img src="images/2025-05-05 (5).webp" alt="Finished style 1" />
-        </div>
-        <div class="gallery-slide">
-          <img src="images/2025-05-05 (4).webp" alt="Finished style 2" />
-        </div>
+  <div class="gallery-link-grid">
+    <a href="gallery.html" class="gallery-link-item"
+       style="background-image: url('images/2025-05-05 (4).webp');">
+      <div class="gallery-link-overlay">
+        <span>Before / After Gallery</span>
       </div>
+    </a>
 
-      <div class="gallery-controls">
-        <div class="gallery-arrows">
-          <button class="gallery-arrow" id="galleryPrev" aria-label="Previous style">‹</button>
-          <button class="gallery-arrow" id="galleryNext" aria-label="Next style">›</button>
-        </div>
-        <div class="gallery-dots" id="galleryDots">
-          <div class="gallery-dot is-active"></div>
-          <div class="gallery-dot"></div>
-          <div class="gallery-dot"></div>
-          <div class="gallery-dot"></div>
-        </div>
+    <a href="gallery.html" class="gallery-link-item"
+       style="background-image: url('images/2025-05-05 (5).webp');">
+      <div class="gallery-link-overlay">
+        <span>Client Cuts & Styles</span>
       </div>
-    </div>
-  </section>
+    </a>
+  </div>
+</section>
+
 
   <!-- BOOKING BAND -->
   <section class="video-band">
