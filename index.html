@@ -175,36 +175,42 @@
       opacity: 1;
     }
 
-    .nav-toggle {
-      display: none;
-      width: 26px;
-      height: 18px;
-      position: relative;
-      cursor: pointer;
-    }
+    /* Custom hamburger menu icon */
+.nav-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  display: none;
+}
 
-    .nav-toggle span {
-      position: absolute;
-      height: 2px;
-      width: 100%;
-      background: var(--accent);
-      left: 0;
-      transition: 0.25s ease;
-    }
+.nav-toggle .nav-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-    .nav-toggle span:nth-child(1) { top: 0; }
-    .nav-toggle span:nth-child(2) { top: 8px; }
-    .nav-toggle span:nth-child(3) { top: 16px; }
+}
+/* Default (hamburger) icon */
+.nav-toggle .nav-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.25s ease;
+}
 
-    .nav-toggle.active span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .nav-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav-toggle.active span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
+/* When menu is open, swap icon to close (X) */
+.nav-toggle.active .nav-icon {
+  content: url("images/icons8-close-48.png");
+}
+    
+/* Show the icon on mobile */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: block;
+  }
 
     /* ---------------- HERO / BOOKING ---------------- */
 
@@ -1065,8 +1071,9 @@
     </nav>
 
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-      <span></span><span></span><span></span>
+    <img src="images/icons8-menu-48.png" alt="Menu" class="nav-icon">
     </button>
+
   </header>
 
   <!-- HERO / BOOKING -->
