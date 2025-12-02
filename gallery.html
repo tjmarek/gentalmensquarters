@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gallery – The Gentlemen's Quarters</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="fav.png" />
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #0b0b0d;
+      --bg-alt: #101013;
+      --bg-card: #15151a;
+      --bg-soft: #1a1a20;
+      --text-main: #ffffff;
+      --text-muted: #b3b3b8;
+      --accent: #f5f5f5;
+      --accent-soft: #dcdcdc;
+      --border-soft: rgba(255,255,255,0.12);
+      --accent-line: #e0e0e0;
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 90px 8vw;
+      position: relative;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--accent-line);
+      opacity: 0.5;
+    }
+
+    h1, h2 {
+      font-family: "Oswald", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(34px, 4vw, 46px);
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-top: 14px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    /* ---------------- HEADER ---------------- */
+
+    .site-header {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 1000;
+      padding: 20px 8vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(14px);
+      background: radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 45%) rgba(5,5,7,0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand-mark {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-title {
+      font-family: "Oswald", sans-serif;
+      font-size: 19px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      font-size: 11px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-block: 4px;
+      color: var(--accent-soft);
+      opacity: 0.8;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: translateX(-50%);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.is-active::after {
+      width: 60%;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    /* Image-based hamburger button */
+    .nav-toggle {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      display: none; /* shown on mobile */
+    }
+
+    .nav-toggle .nav-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: 0.25s ease;
+    }
+
+    /* Swap to X icon when active */
+    .nav-toggle.active .nav-icon {
+      content: url("images/icons8-close-48.png");
+    }
+
+    /* ---------------- HERO (GALLERY) ---------------- */
+
+    .hero {
+      padding-top: 120px; /* space for fixed header */
+      padding-bottom: 70px;
+      padding-inline: 8vw;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0.96)),
+        url("images/AdobeStock_329631704.jpeg") center center / cover no-repeat;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero-subtitle {
+      margin-top: 16px;
+      font-size: 15px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    .hero-copy {
+      margin-top: 22px;
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    /* ---------------- GALLERY LAYOUT ---------------- */
+
+    .gallery-section {
+      padding: 70px 8vw;
+    }
+
+    .gallery-section:nth-of-type(odd) {
+      background: var(--bg-main);
+    }
+
+    .gallery-section:nth-of-type(even) {
+      background: var(--bg-alt);
+    }
+
+    .gallery-section .section-heading p {
+      max-width: 720px;
+      margin: 18px auto 0;
+    }
+
+    .gallery-grid {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .gallery-item {
+      background: var(--bg-soft);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      padding: 10px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Before & after – slightly larger cards on desktop */
+    .before-after-grid {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .before-after-item {
+      background: var(--bg-soft);
+      border-radius: 4px;
+      border: 1px solid var(--border-soft);
+      padding: 12px;
+    }
+
+    .before-after-label {
+      margin-top: 10px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+      padding: 32px 8vw 26px;
+      background: #050506;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    footer a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    /* ---------------- RESPONSIVE ---------------- */
+
+    @media (max-width: 1024px) {
+      .hero {
+        padding-inline: 6vw;
+      }
+
+      .gallery-section {
+        padding-inline: 6vw;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .site-header {
+        padding-inline: 6vw;
+      }
+
+      .brand-title {
+        font-size: 15px;
+        letter-spacing: 0.22em;
+      }
+
+      .brand-sub {
+        font-size: 9px;
+        letter-spacing: 0.24em;
+      }
+
+      .nav-links {
+        position: fixed;
+        inset-inline: 0;
+        top: 64px;
+        background: rgba(8,8,10,0.98);
+        flex-direction: column;
+        padding: 20px 6vw 30px;
+        gap: 18px;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.25s ease;
+      }
+
+      .nav-links.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .gallery-grid,
+      .before-after-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 100px;
+        padding-bottom: 60px;
+      }
+
+      .hero-copy {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand-mark">
+      <div class="brand-title">The Gentlemen's Quarters</div>
+      <div class="brand-sub">Cynthia Rivera · Austin Barber</div>
+    </div>
+
+    <nav class="nav-links" id="siteNav">
+      <!-- Booking goes straight to Square -->
+      <a href="https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services?gei=ee4tad7yJ-OyqtsP9pXt0Q4&hl=en-US&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D" target="_blank" rel="noopener">Booking</a>
+      <a href="index.html#booking">Home</a>
+      <a href="gallery.html" class="is-active">Gallery</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#testimonials">Testimonials</a>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <img src="images/icons8-menu-48.png" alt="Menu" class="nav-icon">
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="eyebrow">Gallery</div>
+      <h1>Client Cuts & Studio Atmosphere</h1>
+      <div class="hero-subtitle">Real clients · Real detail · No filters</div>
+      <p class="hero-copy">
+        Explore recent client cuts, fades, beard work, and before &amp; after transformations from The Gentlemen’s Quarters studio in Austin, Texas.
+      </p>
+    </div>
+  </section>
+
+  <!-- CLIENT CUTS & STYLES -->
+  <section class="gallery-section" id="cuts">
+    <div class="section-heading">
+      <div class="eyebrow">Client Cuts & Styles</div>
+      <h2>Everyday Looks, Detailed Execution</h2>
+      <p>
+        A selection of real client cuts and styles — from clean tapers and classic business cuts to modern fades and long hair shaping.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/2025-05-05.webp" alt="Client cut 1">
+      </div>
+      <div class="gallery-item">
+        <img src="images/2025-05-05 (1).webp" alt="Client cut 2">
+      </div>
+      <div class="gallery-item">
+        <img src="images/2025-05-05 (2).webp" alt="Client cut 3">
+      </div>
+      <div class="gallery-item">
+        <img src="images/2025-05-05 (3).webp" alt="Client cut 4">
+      </div>
+      <div class="gallery-item">
+        <img src="images/2025-05-05 (4).webp" alt="Client cut 5">
+      </div>
+      <div class="gallery-item">
+        <img src="images/2025-05-05 (5).webp" alt="Client cut 6">
+      </div>
+      <div class="gallery-item">
+        <img src="images/2025-05-05 copy.webp" alt="Client cut 7">
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO & ATMOSPHERE -->
+  <section class="gallery-section" id="studio">
+    <div class="section-heading">
+      <div class="eyebrow">Studio & Atmosphere</div>
+      <h2>The Gentlemen's Quarters Environment</h2>
+      <p>
+        A modern, black-and-white studio focused on calm, one-on-one service — curated lighting, clean lines, and an emphasis on comfort and detail.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/AdobeStock_204936248.jpeg" alt="Studio detail 1">
+      </div>
+      <div class="gallery-item">
+        <img src="images/AdobeStock_245305798.jpeg" alt="Studio detail 2">
+      </div>
+      <div class="gallery-item">
+        <img src="images/AdobeStock_329631704.jpeg" alt="Studio detail 3">
+      </div>
+      <div class="gallery-item">
+        <img src="images/IMG_4578 (1).jpg" alt="Cynthia in the studio">
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE & AFTER (ANCHOR TARGET) -->
+  <section class="gallery-section" id="before-after">
+    <div class="section-heading">
+      <div class="eyebrow">Before & After</div>
+      <h2>Transformations</h2>
+      <p>
+        A closer look at full transformations — from grown-out or uneven hair to clean, structured shapes that grow out well and complement each client’s features.
+      </p>
+    </div>
+
+    <div class="before-after-grid">
+      <div class="before-after-item">
+        <img src="images/2025-11-02.webp" alt="Before and after 1">
+        <div class="before-after-label">Before &amp; After</div>
+      </div>
+      <div class="before-after-item">
+        <img src="images/2025-11-02 (1).webp" alt="Before and after 2">
+        <div class="before-after-label">Before &amp; After</div>
+      </div>
+      <div class="before-after-item">
+        <img src="images/2025-11-02(10).webp" alt="Before and after 3">
+        <div class="before-after-label">Before &amp; After</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2025 The Gentlemen's Quarters · Cynthia Rivera</div>
+    <div>Built with ♡ by TJ Marek</div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const siteNav = document.getElementById("siteNav");
+
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("active");
+      siteNav.classList.toggle("is-open");
+    });
+  </script>
+</body>
+</html>
