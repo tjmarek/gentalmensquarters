@@ -16,475 +16,350 @@
   <link rel="preload" as="image" href="images/AdobeStock_245305798.jpeg" />
 
   <style>
-    :root {
-      --bg-main: #0b0b0d;
-      --bg-alt: #101013;
-      --bg-card: #15151a;
-      --bg-soft: #1a1a20;
-      --text-main: #ffffff;
-      --text-muted: #b3b3b8;
-      --accent: #f5f5f5;
-      --accent-soft: #dcdcdc;
-      --border-soft: rgba(255,255,255,0.12);
-      --accent-line: #e0e0e0;
-      --transition-fast: 0.25s ease;
-      --gold: #f5c249;
+    :root{
+      --bg-main:#0b0b0d;
+      --bg-alt:#101013;
+      --bg-card:#15151a;
+      --text-main:#ffffff;
+      --text-muted:#b3b3b8;
+      --accent:#f5f5f5;
+      --accent-soft:#dcdcdc;
+      --border-soft:rgba(255,255,255,0.12);
+      --accent-line:#e0e0e0;
+      --transition-fast:0.25s ease;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-main);
-      color: var(--text-main);
-      overflow-x: hidden;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Montserrat",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg-main);
+      color:var(--text-main);
+      overflow-x:hidden;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
 
-    section { padding: 90px 8vw; position: relative; }
+    section{padding:90px 8vw;position:relative}
 
-    .section-heading { text-align: center; margin-bottom: 40px; }
-
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 18px;
+    .eyebrow{
+      font-size:12px;
+      letter-spacing:.25em;
+      text-transform:uppercase;
+      color:var(--text-muted);
+      display:inline-flex;
+      align-items:center;
+      gap:18px;
     }
-    .eyebrow::before, .eyebrow::after {
-      content: "";
-      display: block;
-      height: 1px;
-      width: 40px;
-      background: var(--accent-line);
-      opacity: 0.5;
+    .eyebrow::before,.eyebrow::after{
+      content:"";
+      width:40px;
+      height:1px;
+      background:var(--accent-line);
+      opacity:.5;
     }
 
-    h1, h2, h3 {
-      font-family: "Oswald", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
+    h1,h2,h3{
+      font-family:"Oswald",sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:600;
     }
-    p { font-size: 15px; line-height: 1.8; color: var(--text-muted); }
+
+    p{font-size:15px;line-height:1.8;color:var(--text-muted)}
 
     /* ---------------- HEADER ---------------- */
 
-    .site-header {
-      position: fixed;
-      inset-inline: 0;
-      top: 0;
-      z-index: 1000;
-      padding: 20px 8vw;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      backdrop-filter: blur(14px);
-      background: radial-gradient(circle at top, rgba(255,255,255,0.06), transparent 45%) rgba(5,5,7,0.92);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    .site-header{
+      position:fixed;
+      inset-inline:0;
+      top:0;
+      z-index:1000;
+      padding:20px 8vw;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      backdrop-filter:blur(14px);
+      background:rgba(5,5,7,.92);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .brand-mark { display: flex; flex-direction: column; gap: 4px; }
-    .brand-title {
-      font-family: "Oswald", sans-serif;
-      font-size: 19px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-    }
-    .brand-sub {
-      font-size: 11px;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+    .brand-title{
+      font-family:"Oswald",sans-serif;
+      font-size:19px;
+      letter-spacing:.24em;
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 34px;
-      font-size: 11px;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
+    .brand-sub{
+      font-size:11px;
+      letter-spacing:.26em;
+      color:var(--text-muted);
+      text-transform:uppercase;
     }
 
-    .nav-links a {
-      position: relative;
-      padding-block: 4px;
-      color: var(--accent-soft);
-      opacity: 0.8;
+    .nav-links{
+      display:flex;
+      gap:34px;
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
     }
 
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -8px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transform: translateX(-50%);
-      transition: width var(--transition-fast);
+    .nav-links a{opacity:.8}
+    .nav-links a:hover{opacity:1}
+
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:none;
+      width:34px;
+      height:34px;
+      cursor:pointer;
     }
 
-    .nav-links a:hover::after,
-    .nav-links a.is-active::after { width: 60%; }
+    .nav-icon{width:100%;height:100%;object-fit:contain}
 
-    .nav-links a:hover { opacity: 1; }
-
-    /* Image-based hamburger toggle */
-    .nav-toggle {
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      width: 34px;
-      height: 34px;
-      display: none;
+    .nav-toggle.active .nav-icon{
+      content:url("images/icons8-close-48.png");
     }
-
-    .nav-toggle .nav-icon {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      transition: 0.25s ease;
-    }
-
-    .nav-toggle.active .nav-icon { content: url("images/icons8-close-48.png"); }
 
     /* ---------------- HERO ---------------- */
 
-    .contact-hero {
-      height: 65vh; /* match gallery hero height */
-      min-height: 0; /* remove previous 520px lock */
-      padding-top: 110px;
-      padding-inline: 8vw;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      color: var(--accent);
+    .contact-hero{
+      height:65vh;
+      min-height:520px;
+      padding-top:110px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.92) 70%, #08080a 100%),
-        url("images/AdobeStock_245305798.jpeg") center center / cover no-repeat;
+        linear-gradient(to bottom,rgba(0,0,0,.45),rgba(0,0,0,.9)),
+        url("images/AdobeStock_245305798.jpeg") center/cover no-repeat;
     }
 
-    .contact-hero-inner { max-width: 880px; }
-
-    .contact-title {
-      font-size: clamp(42px, 5vw, 66px);
-      line-height: 1.08;
-      text-transform: uppercase;
+    .contact-title{
+      font-size:clamp(40px,5vw,64px);
+      line-height:1.08;
     }
 
-    .contact-sub {
-      font-size: clamp(18px, 2.4vw, 24px);
-      margin-top: 14px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
+    .contact-sub{
+      margin-top:14px;
+      letter-spacing:.2em;
+      color:var(--accent-soft);
+      text-transform:uppercase;
     }
 
-    .contact-copy {
-      margin-top: 22px;
-      max-width: 640px;
-      margin-inline: auto;
-      color: var(--text-muted);
+    .btn{
+      margin-top:34px;
+      border:1px solid var(--accent);
+      background:var(--accent);
+      color:#050506;
+      padding:14px 34px;
+      font-size:12px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
     }
 
-    .hero-cta-row {
-      margin-top: 34px;
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
+    .circle{
+      width:26px;
+      height:26px;
+      border-radius:50%;
+      background:#000;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
     }
 
-    .btn {
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #050506;
-      padding: 14px 34px;
-      font-size: 12px;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      font-weight: 600;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    /* ---------------- CONTACT BODY ---------------- */
+
+    .contact-wrap{
+      background:
+        radial-gradient(circle at top,rgba(255,255,255,.05),transparent 55%),
+        var(--bg-main);
+      padding-block:100px;
     }
 
-    .btn-outline {
-      background: transparent;
-      color: var(--accent-soft);
-      border-color: rgba(255,255,255,0.7);
+    .contact-inner{
+      max-width:1200px;
+      margin:0 auto;
     }
 
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 18px 35px rgba(0,0,0,0.6); }
-    .btn-outline:hover { background: #fff; color: #000; }
-
-    .btn-circle { display: inline-flex; align-items: center; gap: 12px; }
-    .btn-circle .circle {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 2px solid #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      font-size: 12px;
+    .section-heading{
+      text-align:center;
+      margin-bottom:36px;
     }
 
-    /* ---------------- CONTACT GRID ---------------- */
-
-    .contact-wrap {
-      background: var(--bg-main);
-      padding-block: 110px;
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:26px;
+      align-items:stretch;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 32px;
-      align-items: start;
+    .panel{
+      background:var(--bg-card);
+      border:1px solid var(--border-soft);
+      border-radius:3px;
+      position:relative;
+      overflow:hidden;
     }
 
-    .panel {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
-      border-radius: 3px;
-      overflow: hidden;
-      position: relative;
+    .panel-inner{padding:36px}
+
+    .panel-title{
+      font-size:20px;
+      letter-spacing:.2em;
+      margin-bottom:18px;
     }
 
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset-inline: 0;
-      top: 0;
-      height: 42%;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
-      opacity: 0.5;
-      pointer-events: none;
+    .kv{
+      display:grid;
+      grid-template-columns:140px 1fr;
+      gap:14px 18px;
+      margin-top:18px;
     }
 
-    .panel-inner { position: relative; padding: 30px; }
-
-    .panel-title {
-      font-size: 20px;
-      letter-spacing: 0.2em;
-      margin-bottom: 14px;
-      text-transform: uppercase;
+    .k{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--accent-soft);
     }
 
-    .underline {
-      width: 46px;
-      height: 2px;
-      background: var(--accent-line);
-      margin-bottom: 18px;
-      opacity: 0.7;
+    .v a{text-decoration:underline}
+
+    .action-row{
+      margin-top:26px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
-    .kv {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 10px 18px;
-      margin-top: 18px;
-      align-items: start;
+    .btn-small{
+      padding:12px 18px;
+      font-size:11px;
+      letter-spacing:.22em;
+      background:transparent;
+      border:1px solid var(--accent);
+      color:var(--accent);
     }
 
-    .k {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      opacity: 0.9;
-      padding-top: 4px;
+    /* Photo panel balance */
+    .photo-panel{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
 
-    .v {
-      color: var(--text-muted);
-      font-size: 15px;
-      line-height: 1.7;
+    .photo-panel img{
+      max-height:520px;
+      object-fit:contain;
+      background:#000;
+      margin:0 auto;
     }
 
-    .v a {
-      color: var(--accent-soft);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      opacity: 0.95;
+    .photo-caption{
+      padding:18px 22px;
+      background:rgba(0,0,0,.65);
+      border-top:1px solid rgba(255,255,255,.08);
     }
 
-    .action-row {
-      margin-top: 22px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    /* ---------------- MAP ---------------- */
 
-    .btn-small {
-      padding: 12px 18px;
-      font-size: 11px;
-      letter-spacing: 0.22em;
+    .map-section{padding:0}
+    .map-container{
+      width:100vw;
+      height:60vh;
+      margin-left:-50vw;
+      left:50%;
+      position:relative;
     }
-
-    .photo-panel {
-      background: #000;
-      position: relative;
-      overflow: hidden;
-      border-radius: 3px;
-    }
-
-    .photo-panel img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain; /* do NOT crop */
-      background: #000;
-    }
-
-    .photo-caption {
-      padding: 18px 22px 22px;
-      background: rgba(0,0,0,0.55);
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .photo-caption h3 {
-      font-size: 18px;
-      letter-spacing: 0.18em;
-      margin-bottom: 6px;
-    }
-
-    /* ---------------- FULL WIDTH MAP ---------------- */
-
-    .map-section { padding: 0; margin: 0; background: #000; }
-    .map-container {
-      width: 100vw;
-      height: 60vh;
-      min-height: 420px;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-    }
-    .map-container iframe { width: 100%; height: 100%; border: 0; display: block; }
+    iframe{width:100%;height:100%;border:0}
 
     /* ---------------- FOOTER ---------------- */
 
-    footer {
-      padding: 32px 8vw 26px;
-      background: #050506;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 16px;
-      font-size: 12px;
-      color: var(--text-muted);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+    footer{
+      padding:32px 8vw;
+      background:#050506;
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:16px;
+      color:var(--text-muted);
     }
 
-    /* ---------------- RESPONSIVE ---------------- */
+    /* ---------------- MOBILE ---------------- */
 
-    @media (max-width: 1024px) {
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 860px) {
-      .site-header { padding-inline: 6vw; }
-
-      .brand-title { font-size: 15px; letter-spacing: 0.22em; }
-      .brand-sub { font-size: 9px; letter-spacing: 0.24em; }
-
-      .nav-links {
-        position: fixed;
-        inset-inline: 0;
-        top: 64px;
-        background: rgba(8, 8, 10, 0.98);
-        flex-direction: column;
-        padding: 20px 6vw 30px;
-        gap: 18px;
-        transform: translateY(-120%);
-        opacity: 0;
-        pointer-events: none;
-        transition: 0.25s ease;
+    @media(max-width:860px){
+      .nav-links{
+        position:fixed;
+        top:64px;
+        inset-inline:0;
+        background:#08080a;
+        flex-direction:column;
+        padding:20px 6vw;
+        transform:translateY(-120%);
+        opacity:0;
+        pointer-events:none;
+        transition:.25s ease;
       }
+      .nav-links.is-open{transform:none;opacity:1;pointer-events:auto}
+      .nav-toggle{display:block}
 
-      .nav-links.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-      .nav-toggle { display: block; }
-
-      section { padding-inline: 6vw; }
-
-      .contact-hero {
-        padding-inline: 6vw;
-        padding-top: 90px;
-      }
-
-      footer { flex-direction: column; align-items: flex-start; }
+      .contact-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="brand-mark">
-      <div class="brand-title">The Gentlemen's Quarters</div>
-      <div class="brand-sub">Cynthia Rivera · Austin Barber</div>
-    </div>
+<header class="site-header">
+  <div>
+    <div class="brand-title">The Gentlemen's Quarters</div>
+    <div class="brand-sub">Cynthia Rivera · Austin Barber</div>
+  </div>
 
-    <nav class="nav-links" id="siteNav">
-      <a href="index.html">Home</a>
-      <a href="https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services?gei=ee4tad7yJ-OyqtsP9pXt0Q4&hl=en-US&rwg_token=ACgRB3cHX5loBMNXX4W7IhTsgKO-Fb9GbHRksiIAZIV3J8_mwBU904--QvneQbRLSZNDWICD6UsEOVY1AiV-MdrXuAxnsfqdNw%3D%3D" target="_blank" rel="noopener noreferrer">Booking</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#testimonials">Testimonials</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <nav class="nav-links" id="siteNav">
+    <a href="index.html">Home</a>
+    <a href="https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services" target="_blank">Booking</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#testimonials">Testimonials</a>
+  </nav>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-      <img src="images/icons8-menu-48.png" alt="Menu" class="nav-icon" />
+  <button class="nav-toggle" id="navToggle">
+    <img src="images/icons8-menu-48.png" class="nav-icon" alt="Menu">
+  </button>
+</header>
+
+<section class="contact-hero">
+  <div>
+    <div class="eyebrow">Contact</div>
+    <h1 class="contact-title">Get in Touch</h1>
+    <div class="contact-sub">By Appointment Only · Austin, Texas</div>
+    <button class="btn" onclick="window.open('https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services','_blank')">
+      <span>Book Now</span><span class="circle">↗</span>
     </button>
-  </header>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="contact-hero">
-    <div class="contact-hero-inner">
-      <div class="eyebrow">Contact</div>
-      <h1 class="contact-title">Get in Touch</h1>
-      <div class="contact-sub">By Appointment Only · Austin, Texas</div>
-      <p class="contact-copy">
-        Reach Cynthia directly by phone or text, or open the location in Maps for easy navigation.
-      </p>
+<section class="contact-wrap">
+  <div class="contact-inner">
 
-      <div class="hero-cta-row">
-        <button class="btn btn-circle"
-          onclick="window.open('https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services','_blank')">
-          <span>Book Now</span>
-          <span class="circle">↗</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT DETAILS -->
-  <section class="contact-wrap">
     <div class="section-heading">
       <div class="eyebrow">Studio Info</div>
       <h2>Phenix Salon Suites</h2>
@@ -492,91 +367,61 @@
     </div>
 
     <div class="contact-grid">
-      <!-- Left: Info -->
+
       <div class="panel">
         <div class="panel-inner">
           <div class="panel-title">Contact Details</div>
-          <div class="underline"></div>
 
           <div class="kv">
             <div class="k">Phone</div>
-            <div class="v">
-              <a href="tel:+15127719533">(512) 771-9533</a><br />
-              <span style="opacity:0.85;">Call or text for questions. Online booking preferred.</span>
-            </div>
+            <div class="v"><a href="tel:+15127719533">(512) 771-9533</a></div>
 
             <div class="k">Address</div>
-            <div class="v">
-              14005 US-183 Suite 1200,<br />
-              Austin, TX 78717, United States
-            </div>
+            <div class="v">14005 US-183 Suite 1200<br>Austin, TX 78717</div>
 
             <div class="k">Hours</div>
-            <div class="v">
-              Mon – Sat · 8:00am – 8:00pm<br />
-              <span style="opacity:0.85;">Subject to availability. Hours vary by day.</span>
-            </div>
+            <div class="v">Mon–Sat · 8:00am–8:00pm</div>
           </div>
 
           <div class="action-row">
-            <a class="btn btn-small" href="tel:+15127719533">Call Now</a>
-            <a class="btn btn-small btn-outline" href="sms:+15127719533">Text Now</a>
-            <a class="btn btn-small btn-outline"
-               href="https://www.google.com/maps/search/?api=1&query=14005%20US-183%20suite%201200%2C%20Austin%2C%20TX%2078717"
-               target="_blank" rel="noopener noreferrer">
-              Open in Maps
-            </a>
+            <a class="btn-small" href="tel:+15127719533">Call Now</a>
+            <a class="btn-small" href="sms:+15127719533">Text Now</a>
+            <a class="btn-small" href="https://www.google.com/maps/search/?api=1&query=14005+US-183+Suite+1200+Austin+TX+78717" target="_blank">Open in Maps</a>
           </div>
         </div>
       </div>
 
-      <!-- Right: Photo -->
       <div class="panel photo-panel">
-        <img src="images/IMG_4578 (1).jpg" alt="Cynthia Rivera in the studio" />
+        <img src="images/IMG_4578 (1).jpg" alt="Cynthia Rivera">
         <div class="photo-caption">
           <h3>Cynthia Rivera</h3>
           <p>Modern men’s grooming with a calm, private studio experience.</p>
         </div>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- MAP (full width) -->
-  <section class="map-section" aria-label="Map">
-    <div class="map-container">
-      <iframe
-        src="https://maps.google.com/maps?width=1920&height=600&hl=en&q=14005%20US-183%20suite%201200%2C%20Austin%2C%20TX%2078717&t=&z=14&ie=UTF8&iwloc=B&output=embed"
-        frameborder="0"
-        allowfullscreen=""
-        loading="lazy">
-      </iframe>
-    </div>
-  </section>
+<section class="map-section">
+  <div class="map-container">
+    <iframe src="https://maps.google.com/maps?hl=en&q=14005%20US-183%20Suite%201200%20Austin%20TX%2078717&z=14&output=embed"></iframe>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div>© 2025 The Gentlemen's Quarters · Cynthia Rivera</div>
-    <div>Built with ♡ by TJ Marek</div>
-  </footer>
+<footer>
+  <div>© 2025 The Gentlemen's Quarters · Cynthia Rivera</div>
+  <div>Built with ♡ by TJ Marek</div>
+</footer>
 
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.getElementById("navToggle");
-    const siteNav = document.getElementById("siteNav");
-
-    navToggle.addEventListener("click", () => {
-      navToggle.classList.toggle("active");
-      siteNav.classList.toggle("is-open");
-    });
-
-    // Close nav after clicking any link (helpful on mobile)
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        siteNav.classList.remove("is-open");
-        navToggle.classList.remove("active");
-      });
-    });
-  </script>
+<script>
+  const navToggle=document.getElementById("navToggle");
+  const siteNav=document.getElementById("siteNav");
+  navToggle.addEventListener("click",()=>{
+    navToggle.classList.toggle("active");
+    siteNav.classList.toggle("is-open");
+  });
+</script>
 
 </body>
 </html>
