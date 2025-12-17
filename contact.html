@@ -160,8 +160,8 @@
     /* ---------------- HERO ---------------- */
 
     .contact-hero {
-      height: 55vh;
-      min-height: 520px;
+      height: 65vh; /* match gallery hero height */
+      min-height: 0; /* remove previous 520px lock */
       padding-top: 110px;
       padding-inline: 8vw;
       display: flex;
@@ -232,6 +232,19 @@
 
     .btn:hover { transform: translateY(-1px); box-shadow: 0 18px 35px rgba(0,0,0,0.6); }
     .btn-outline:hover { background: #fff; color: #000; }
+
+    .btn-circle { display: inline-flex; align-items: center; gap: 12px; }
+    .btn-circle .circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      font-size: 12px;
+    }
 
     /* ---------------- CONTACT GRID ---------------- */
 
@@ -418,15 +431,9 @@
       .contact-hero {
         padding-inline: 6vw;
         padding-top: 90px;
-        min-height: 520px;
       }
 
       footer { flex-direction: column; align-items: flex-start; }
-
-      .contact-hero {
-      min-height: 65vh;  
-      height: auto;
-      }
     }
   </style>
 </head>
@@ -467,12 +474,12 @@
       </p>
 
       <div class="hero-cta-row">
-    <button class="btn btn-circle"
-    onclick="window.open('https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services','_blank')">
-    <span>Book Now</span>
-    <span class="circle">↗</span>
-    </button>
-    </div>
+        <button class="btn btn-circle"
+          onclick="window.open('https://book.squareup.com/appointments/7g6slalylcdx3a/location/L86SQ0C594Y41/services','_blank')">
+          <span>Book Now</span>
+          <span class="circle">↗</span>
+        </button>
+      </div>
     </div>
   </section>
 
